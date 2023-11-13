@@ -12,7 +12,7 @@
 - [x] Line()
 - [x] Simpan($n = Nama file)
 - [x] Slow($msg = string)
-- [x] His($newdata = string,$data= array)
+- [x] His($newdata = array,$data= array)
 - [x] Uagent()
 
 ![Donation: iewil](https://img.shields.io/badge/💰-Donation-blue?style=flat-square)<br>
