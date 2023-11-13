@@ -15,7 +15,7 @@ function Headers(){
 	return $h;
 }
 function Login(){
-	$r = $curl(host,Headers(),'',1)[1];
+	$r = curl(host,Headers(),'',1)[1];
 	if(!explode('Logout',$r)[1]){
 		unlink("cookie.txt");
 	}
