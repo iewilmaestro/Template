@@ -16,7 +16,7 @@ function h($xml=0){
 }
 function dash(){
 	$r= curl(host,h())[1];
-	$user = explode('<',explode('<a href="/notifications.html" class="notification"></a>',$r)[1])[0];
+	$user = explode('<br',explode('</a>',explode('<a href="/notifications.html"',$r)[1])[1])[0];
 	$bal = explode('</b>',explode('Account Balance <div class="text-warning"><b>',$r)[1])[0];
 	$btc = explode('</b>',explode('Current Coins Value <div class="text-warning"><b>',$r)[1])[0];
 	return ["user"=>$user,"bal"=>$bal,"btc"=>$btc];
