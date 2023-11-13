@@ -1,0 +1,164 @@
+function Bahan(){
+	Simpan("Cookie");
+	Simpan("User_Agent");
+	print Slow(p."Jangan lupa \033[101m\033[1;37m Subscribe! \033[0m youtub saya :D");
+	sleep(2);
+	system("termux-open-url ".youtube);
+	Bn();
+}
+function h($xml=0){
+	if($xml){
+		$h[] = "x-requested-with: XMLHttpRequest";
+	}
+	$h[] = "cookie: ".Simpan("Cookie");
+	$h[] = "user-agent: ".Simpan("User_Agent");
+	return $h;
+}
+function dash(){
+	$r= curl(host,h())[1];
+	$user = explode('<',explode('<a href="/notifications.html" class="notification"></a>',$r)[1])[0];
+	$bal = explode('</b>',explode('Account Balance <div class="text-warning"><b>',$r)[1])[0];
+	$btc = explode('</b>',explode('Current Coins Value <div class="text-warning"><b>',$r)[1])[0];
+	return ["user"=>$user,"bal"=>$bal,"btc"=>$btc];
+}
+function sl(){
+	$r = curl(host."shortlinks.html",h())[1];
+	$token = explode("'",explode("var token = '",$r)[1])[0];
+	$id = explode("'",explode("goShortlink('",explode('LinksFly',$r)[1])[1])[0];
+	while(true){
+		$data = "cID=0&rT=1&tM=light";
+		$r = json_decode(Curl(host.'system/libs/captcha/request.php',h(1),$data)[1],1);
+		
+		$data = "cID=0&pC=".($r)[2]."&rT=2";
+		Curl(host.'system/libs/captcha/request.php',h(1),$data,'',1)[1];
+		
+		$data = "a=getShortlink&data=".$id."&token=".$token."&captcha-idhf=0&captcha-hf=".($r)[2];
+		$r = json_decode(Curl(host.'system/ajax.php',h(),$data)[1],1);
+		if($r["status"] == 200){
+			$url = $r["shortlink"];
+			break;
+		}
+	}
+	$scheme = parse_url($url)['scheme'].'://';
+	$host = parse_url($url)['host'];
+    $path = parse_url($url)['path'];
+    $context = stream_context_create(['http' => ['header' => ['origin: https://advertisingexcel.com', 'referer: https://advertisingexcel.com/outgoing/']]]);
+    $res_head = get_headers($scheme.$host.'/flyinc.'.$path, true, $context);
+    $final = $res_head["location"];
+    tmr(rand(10,100));
+    curl($final,h())[1];
+}
+function Ptc(){
+	while(true){
+		$r = Curl(host.'ptc.html',h())[1];
+		$id = explode('"',explode('<div class="website_block" id="',$r)[1])[0];
+		if($id){
+			print "\r                            \r";
+			print k."Bypass..";
+			$key = explode("',",explode("&key=",$r)[1])[0];
+			$r = Curl(host.'surf.php?sid='.$id.'&key='.$key,h())[1];
+			
+			$token = explode("';",explode("var token = '",$r)[1])[0];
+			$tmr = explode(";",explode('var secs = ',$r)[1])[0];
+			tmr($tmr);
+			
+			$a = 0;
+			while($a < 20){
+				$a++;
+				print "\r                            \r";
+				print k."Bypass..";
+				$data = "cID=0&rT=1&tM=light";
+				$r = json_decode(Curl(host.'system/libs/captcha/request.php',h(1),$data)[1],1);
+				$data = "cID=0&pC=".($r)[2]."&rT=2";
+				Curl(host.'system/libs/captcha/request.php',h(1),$data,'',1)[1];
+				
+				$data = "a=proccessPTC&data=".$id."&token=".$token."&captcha-idhf=0&captcha-hf=".($r)[2];
+				$r = json_decode(Curl(host.'system/ajax.php',h(),$data)[1],1);
+				
+				if($r["status"] == 200){
+					print "\r                            \r";
+					print h."Success  ".p."-> ".k.str_replace(" SUCCESS ","",strip_tags($r["message"])).n;
+					print h."Balance  ".p."-> ".k.dash()["bal"].m."/".k.dash()["btc"].n;
+					print line();
+					break;
+				}else{
+					print "\r                            \r";
+					print k."Bypass....";
+					sleep(3);
+				}
+			}
+		}else{
+			print m."Ptc Habis\n";
+			print line();
+			break;
+		}
+	}
+}
+function AntiBot(){
+	while(true){
+		print "\r                            \r";
+		print m."Bypass Antibot.. ";
+		$data = "cID=0&rT=1&tM=light";
+		$r = json_decode(Curl(host.'system/libs/captcha/request.php',h(1),$data)[1],1);
+		
+		$data = "cID=0&pC=".($r)[1]."&rT=2";
+		Curl(host.'system/libs/captcha/request.php',h(1),$data,'',1)[1];
+		
+		$data = "a=proccessAntibot&token=".$token."&type=1&captcha-idhf=0&captcha-hf=".($r)[1];
+		$r = json_decode(Curl(host.'system/ajax.php',h(),$data)[1],1);
+		print "\r                            \r";
+		if($r["status"] == 200){
+			print h."Antibot  ".p."-> ".k."successfully passed".n;
+			print line();
+			break;
+		}else{
+			continue;
+		}
+	}
+}
+function Faucet($tmr){
+	while(true){
+		$r = Curl(host,h())[1];
+		if(preg_match('/Cloudflare/',$r)){
+			print m."Cloudflare detect".n;
+			print line();
+			unlink("Cookie");
+			return 1;
+		}
+		if(preg_match('/Faucet Locked!/',$r)){
+			sl();
+			continue;
+		}
+		$sisa = explode('</span>',explode('<span id="claimTime">',$r)[1])[0];//47 
+		if($sisa){
+			$tmr_sisa =  preg_replace('/[a-z]/','',$sisa);
+			if(preg_match('/minutes/',$sisa)){
+				tmr($tmr_sisa*60);
+				continue;
+			}else{
+				tmr($tmr_sisa);
+				continue;
+			}
+		}
+		$token = explode("'",explode("var token = '",$r)[1])[0];
+		if(preg_match('/ANTIBOT/',$r)){
+			AntiBot();
+		}
+		$sitekey = explode('">',explode('class="g-recaptcha" data-sitekey="',$r)[1])[0];
+		if(!$sitekey){
+			continue;
+		}
+		$cap = recaptchav2($sitekey, host);
+		if(!$cap)continue;
+		$data = "a=getFaucet&token=".$token."&captcha=1&challenge=false&response=".$cap;
+		$r = json_decode(Curl(host.'system/ajax.php',h(),$data)[1],1);
+		if($r["status"] == 200){
+			print "\r                            \r";
+			print h."Success  ".p."-> ".k.str_replace([" Congratulations, your ","was","and you won"],["",p."->".k,p."->".k],strip_tags($r["message"])).n;
+			print h."Balance  ".p."-> ".k.dash()["bal"].m."/".k.dash()["btc"].n;
+			print h."Api_Bal  ".p."-> ".k.Api_Bal().n;
+			print line();
+			tmr($tmr);
+		}
+	}
+}
