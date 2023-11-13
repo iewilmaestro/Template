@@ -98,7 +98,7 @@ function Tmr($tmr){
 	while(true){
 		$a +=1;
 		$x = $col[array_rand($col)];
-		$nic = $this->auth($x);
+		$nic = auth($x);
 		
 		$res=$timr-time();
 		if($res < 1) {
@@ -141,7 +141,7 @@ function Acssi_calvin($string){
 
 function Bn(){
 	system("clear");
-	$zone = $this->TimeZone();
+	$zone = TimeZone();
 	$tanggal = Date("d-M-Y");
 	$waktu = Date("H:i:s");
 	$panjang = 50-strlen($zone.$tanggal.$waktu);
@@ -151,11 +151,11 @@ function Bn(){
 		$lokasi .= " ";
 	}
 	print $lokasi.n;
-	print $this->Line();
-	$this->Acssi_calvin(title);
+	print Line();
+	Acssi_calvin(title);
 	print mp.str_pad("FREE SCRIPT! NOT FOR SALE",50," ",STR_PAD_BOTH).d."\n";
 	print pm.str_pad("© Copyright IEWIL OFFICIAL 2023",50," ",STR_PAD_BOTH)." ".d."\n";
-	print $this->Line();
+	print Line();
 }
 function Line(){
 	return p.str_repeat('─',50).n;
