@@ -160,6 +160,9 @@ function Title($str){
 function Error($except){
 	return m."──[".p."!".m."] ".p.$except;
 }
+function Sukses($msg){
+return h."──[".p."✓".h."] ".p.$except;
+}
 function Cetak($label, $msg){
 	$len = 9;
 	$lenstr = $len-strlen($label);
