@@ -1,1 +1,9 @@
-
+$apikey = "";
+function Api_Bal(){
+  global $apikey;
+	$x = json_decode(file_get_contents("http://api.multibot.in/res.php?action=userinfo&key=".$apikey),1);
+	if(!$x["balance"]){
+		exit("Apikey: ".m."Saldo Apikey habis!".n);
+	}
+	return $x["balance"]." Token";
+}
