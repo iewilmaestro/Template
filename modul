@@ -158,7 +158,7 @@ function Title($str){
 	print k."──[".p.$str.k."]──".n;
 }
 function Error($except){
-	print m."──[".p."!".m."] ".p.$except;
+	return m."──[".p."!".m."] ".p.$except;
 }
 function Cetak($label, $msg){
 	$len = 9;
