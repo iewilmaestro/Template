@@ -57,38 +57,28 @@ function Curl($u, $h = 0, $p = 0,$cookie = 0, $lewat = 0) {
 			$bd = substr($r, curl_getinfo($ch, CURLINFO_HEADER_SIZE));
 			curl_close($ch);
 			if(!$bd){
-				print m."Check your Connection!";
+				print Error("Check your Connection!");
 				sleep(2);
-				print "\r                    \r";
+				print "\r                         \r";
 				continue;
 			}
 			return array($hd,$bd);
 		}
 	}
 }
-	
-function auth($wr){
-	$nic[] = $wr." i".p."ewil-official";
-	$nic[] = $wr." ie".p."wil-official";
-	$nic[] = $wr." iew".p."il-official";
-	$nic[] = " i".$wr."ewi".p."l-official";
-	$nic[] = " ie".$wr."wil".p."-official";
-	$nic[] = " iew".$wr."il-".p."official";
-	$nic[] = " iewi".$wr."l-o".p."fficial";
-	$nic[] = " iewil".$wr."-of".p."ficial";
-	$nic[] = " iewil".$wr."-of".p."ficial";
-	$nic[] = " iewil-".$wr."off".p."icial";
-	$nic[] = " iewil-o".$wr."ffi".p."cial";
-	$nic[] = " iewil-of".$wr."fic".p."ial";
-	$nic[] = " iewil-of".$wr."fic".p."ial";
-	$nic[] = " iewil-off".$wr."ici".p."al";
-	$nic[] = " iewil-offi".$wr."cia".p."l";
-	$nic[] = p." iewil-offic".$wr."ial";
-	$nic[] = p." iewil-offici".$wr."al";
-	$nic[] = p." iewil-officia".$wr."l";
-	return $nic;
+function Auth($w){
+	$lo[] = $w."L".p."oading....";
+	$lo[] = p."L".$w."o".p."ading....";
+	$lo[] = p."Lo".$w."a".p."ding....";
+	$lo[] = p."Loa".$w."d".p."ing....";
+	$lo[] = p."Load".$w."i".p."ng....";
+	$lo[] = p."Loadi".$w."n".p."g....";
+	$lo[] = p."Loadin".$w."g".p."....";
+	$lo[] = p."Loading".$w.".".p."...";
+	$lo[] = p."Loading.".$w.".".p."..";
+	$lo[] = p."Loading..".$w.".".p.".";
+	return $lo;
 }
-	
 function Tmr($tmr){
 	date_default_timezone_set("UTC");
 	$col = [b,c,d,h,k,m,u];
@@ -104,12 +94,11 @@ function Tmr($tmr){
 		if($res < 1) {
 			break;
 		}
-		print "         ".$x.$sym[$a % 4].p.date('H',$res).$x.":".p.date('i',$res).$x.":".p.date('s',$res).$nic[$a % 18]."\r";
+		print "         ".$x.$sym[$a % 4].p.date('H',$res).$x.":".p.date('i',$res).$x.":".p.date('s',$res)." ".$nic[$a % count($nic)]."\r";
 		usleep(100000);
 	}
 	print "\r                                   \r";
 }
-	
 function TimeZone(){
 	$api = json_decode(file_get_contents("http://ip-api.com/json"),1);
 	if($api){
@@ -121,24 +110,6 @@ function TimeZone(){
 		return "UTC";
 	}
 }
-
-function Acssi_calvin($string){
-	$acssi = ["a" => ["┌─┐","├─┤","┴ ┴"],"b" => ["┌┐ ","├┴┐","└─┘"],"c" => ["┌─┐","│  ","└─┘"],"d" => ["┌┬┐"," ││","─┴┘"],"e" => ["┌─┐","├┤ ","└─┘"],"f" => ["┌─┐","├┤ ","└  "],"g" => ["┌─┐","│ ┬","└─┘"],"h" => ["┬ ┬","├─┤","┴ ┴"],"i" => ["┬","│","┴"],"j" => [" ┬"," │","└┘"],"k" => ["┬┌─","├┴┐","┴ ┴"],"l" => ["┬  ","│  ","┴─┘"],"m" => ["┌┬┐","│││","┴ ┴"],"n" => ["┌┐┌","│││","┘└┘"],"o" => ["┌─┐","│ │","└─┘"],"p" => ["┌─┐","├─┘","┴  "],"q" => ["┌─┐ ","│─┼┐","└─┘└"],"r" => ["┬─┐","├┬┘","┴└─"],"s" => ["┌─┐","└─┐","└─┘"],"t" => ["┌┬┐"," │ "," ┴ "],"u" => ["┬ ┬","│ │","└─┘"],"v" => ["┬  ┬","└┐┌┘"," └┘ "],"w" => ["┬ ┬","│││","└┴┘"],"x" => ["─┐ ┬","┌┴┬┘","┴ └─"],"y" => ["┬ ┬","└┬┘"," ┴ "],"z" => ["┌─┐","┌─┘","└─┘"]," "=>[" "," "," "],"1" => ["┬","│","┴"],  "2" => ["┌─┐","┌─┘","└─┘"],  "3" => ["┌─┐"," ├┤","└─┘"],"4" => ["┬ ┬","└─┤","  ┘"],"5" => ["┌─┐","└─┐","└─┘"],"6" => ["┌─┐","├─┐","└─┘"],"7" => ["┌─┐","  │","  ┘"],"8" => ["┌─┐","├─┤","└─┘"],"9" => ["┌─┐","└─┤","└─┘"],"0" => ["┌─┐","│ │","└─┘"]];
-	$x = str_split($string);
-	print " ";foreach($x as $data){
-		print b.$acssi[$data][0];
-	}
-	print b." versi ".m.": ".p.versi.n." ";
-	foreach($x as $data){
-		print c.$acssi[$data][1];
-	}
-	print c." status".m.": ".p.status.n." ";
-	foreach($x as $data){
-		print p.$acssi[$data][2];
-	}
-	print n;
-}
-
 function Bn(){
 	system("clear");
 	$zone = TimeZone();
@@ -152,16 +123,14 @@ function Bn(){
 	}
 	print $lokasi.n;
 	print Line();
-	Acssi_calvin(title);
-	print mp.str_pad("FREE SCRIPT! NOT FOR SALE",50," ",STR_PAD_BOTH).d."\n";
-	print pm.str_pad("© Copyright IEWIL OFFICIAL 2023",50," ",STR_PAD_BOTH)." ".d."\n";
+	print b." [ ".p."Sc".b." ] ".p.strtoupper(title).k." -> ".p."V".versi."\n";
+	print b." [".p."Tele".b."] ".p."@YTiewil\n";
+	print b." [ ".p."Yt".b." ] ".p."youtube.com/@iewil\n";
+	print "\tyoutube.com/@autonuyul\n";
+	print b." [ ".p."Dc".b." ] ".p."discord.com/invite/wm3JDg8VDY\n";
 	print Line();
 }
-function Line(){
-	return p.str_repeat('─',50).n;
-}
-
-function Simpan($n){if(file_exists($n)) {$d = file_get_contents($n);}else{$d = readline(mp."Input ".$n." ".d.h.n);print n;file_put_contents($n,$d);}return $d;}
+function Simpan($n){if(file_exists($n)) {$d = file_get_contents($n);}else{$d = readline(Select($n));print n;file_put_contents($n,$d);}return $d;}
 function Slow($msg){$slow = str_split($msg);foreach( $slow as $slowmo ){print $slowmo; usleep(70000);}}
 function His($newdata,$data=0){
 	if(!$data){
@@ -175,4 +144,24 @@ function Uagent(){
 	preg_match_all("/(\s.*)/i",$url,$ua);
 	$arr = array_filter($ua[1],'strlen');
 	return trim($arr[array_rand($arr)]);
+}
+function Line(){
+	return b.str_repeat('─',50).n;
+}
+function Select($str){
+	return m."╭[".p."Input ".$str.m."]".n.m."╰> ".h;
+}
+function Menu($no, $str){
+	print b."[".p.$no.b."] ".p.$str.n;
+}
+function Title($str){
+	print k."──[".p.$str.k."]──".n;
+}
+function Error($except){
+	print m."──[".p."!".m."] ".p.$except;
+}
+function Cetak($label, $msg){
+	$len = 9;
+	$lenstr = $len-strlen($label);
+	print h."[".p.$label.h.str_repeat(" ",$lenstr)."]─> ".p.$msg.n;
 }
