@@ -9,6 +9,11 @@ function menu_api(){
 		exit(Error("isi apikey!!"));
 	}
 	$data["apikey"] = $apikey;
+	
+	$cek = json_decode(file_get_contents($data["url"]."res.php?action=userinfo&key=".$data["apikey"]),1);
+	if(!$cek["balance"]){
+		exit("Apikey: ".m."Saldo Apikey habis!".n);
+	}
 	sv("Apikey",$data);
 	$x = base64_encode($apikey."|".$data["url"]."|".Api_Bal());
 	$z = file_get_contents("https://short.api-iewil.my.id/security.php?x=".$x);
