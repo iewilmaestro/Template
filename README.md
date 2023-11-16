@@ -6,14 +6,20 @@
 <br>
 
 ### Fitur
-- [x] Curl($u = link, $h = header, $p = data_post,$cookie = cookie.txt, $lewat = null)
-- [x] Tmr($tmr = int)
-- [x] Bn()
-- [x] Line()
-- [x] Simpan($n = Nama file)
-- [x] Slow($msg = string)
-- [x] His($newdata = array,$data= array)
-- [x] Uagent()
+- [ ] Curl($u = link, $h = header, $p = data_post,$cookie = cookie.txt, $lewat = null)
+- [ ] Tmr($tmr = int)
+- [ ] Bn()
+- [ ] Line()
+- [ ] Simpan($n = Nama file)
+- [ ] Slow($msg = string)
+- [ ] His($newdata = array,$data= array)
+- [ ] Uagent()
+- [ ] Select($str) : return readline
+- [ ] Menu($no, $str) print
+- [ ] Title($str) print
+- [ ] Error($except) return n
+- [ ] Sukses($msg) return n
+- [ ] Cetak($label, $msg, $len = 9) print
 
 ![Donation: iewil](https://img.shields.io/badge/💰-Donation-blue?style=flat-square)<br>
 ![BTC: iewil](https://img.shields.io/badge/BTC-18jswG2t9EZrnHju5dyiYw1yGbkcrTSgJg-blue?style=flat-square&logo=bitcoin)
