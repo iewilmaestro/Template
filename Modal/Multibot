@@ -160,12 +160,17 @@ function Hcaptcha($sitekey, $pageurl){
 	$apikey = $api["apikey"];
 	return HcType1($url,$apikey, $sitekey, $pageurl);
 }
-
 function Ocr($img){
 	$api = json_decode(file_get_contents("Apikey"),1);
 	$url = $api["url"];
 	$apikey = $api["apikey"];
 	return OcrType1($url, $apikey, $img);
+}
+function Atb($source){
+	$api = json_decode(file_get_contents("Apikey"),1);
+	$url = $api["url"];
+	$apikey = $api["apikey"];
+	return AtbType1($url, $apikey, $source);
 }
 #balance
 function Api_Bal(){
