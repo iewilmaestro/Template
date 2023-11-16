@@ -1,5 +1,4 @@
 function menu_api(){
-	$data["type"] = 1;
 	$data["url"] = "http://api.multibot.in/";
 	$data["ref"] = "short.api-iewil.my.id/Api/multi";
 	$data["cc"] = 'Token';
