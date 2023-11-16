@@ -168,7 +168,7 @@ function Rv2Type1($url, $apikey, $sitekey, $pageurl){
 	}
 }
 function HcType1($url,$apikey, $sitekey, $pageurl){
-	$r =  json_decode(file_get_contents($url."in.php?key=".$apikey."&method=hcaptcha&googlekey=".$sitekey."&pageurl=".$pageurl."&json=1"),1);
+	$r =  json_decode(file_get_contents($url."in.php?key=".$apikey."&method=hcaptcha&sitekey=".$sitekey."&pageurl=".$pageurl."&json=1"),1);
 	$status = $r["status"];
 	//print_r(b.$r.p);
 	if($status == 0){
