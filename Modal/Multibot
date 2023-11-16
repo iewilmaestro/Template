@@ -152,7 +152,6 @@ function Recaptchav2($sitekey, $pageurl){
 	$url = $api["url"];
 	$apikey = $api["apikey"];
 	return Rv2Type1($url, $apikey, $sitekey, $pageurl);
-	
 }
 function Hcaptcha($sitekey, $pageurl){
 	$api = json_decode(file_get_contents("Apikey"),1);
