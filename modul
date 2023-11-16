@@ -161,7 +161,7 @@ function Error($except){
 	return m."──[".p."!".m."] ".p.$except;
 }
 function Sukses($msg){
-return h."──[".p."✓".h."] ".p.$msg;
+	return h."──[".p."✓".h."] ".p.$msg;
 }
 function Cetak($label, $msg){
 	$len = 9;
